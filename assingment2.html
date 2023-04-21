@@ -62,11 +62,10 @@
             content: "*";
             color: red;
         }
-        body{
-            background-color:peachpuff;
-        }
 
-       
+        body {
+            background-color: peachpuff;
+        }
     </style>
 </head>
 
@@ -112,7 +111,35 @@
                 <input type="radio" id="bad-quality" name="quality" value="bad" required>
                 <label for="bad-quality">Bad</label>
             </div>
-            <div class="center">
+            <div>
+                <!-- <label for="value" class="required">Value for money</label><br>
+		<input type="radio" id="value-excellent" name="value" value="Excellent" required>
+		<label for="value-excellent">Excellent</label>
+		<input type="radio" id="value-good" name="value" value="Good" required>
+		<label for="value-good">Good</label>
+		<input type="radio" id="value-bad" name="value" value="bad" required>
+		<label for="value-Bad">Bad</label>
+         -->
+                <label>Value for money*:</label>
+                <input type="radio" id="value-excellent" name="value" value="excellent" required>
+                <label for="value-excellent">Excellent</label>
+                <input type="radio" id="value-good" name="value" value="good" required>
+                <label for="value-good">Good</label>
+                <input type="radio" id="value-bad" name="value" value="bad" required>
+                <label for="value-bad">Bad</label>
+            </div><br><br><br>
+            <div>
+                <label>Delivery*:</label>
+                <input type="radio" id="delivery-excellent" name="delivery" value="excellent" required>
+                <label for="delivery-excellent">Excellent</label>
+                <input type="radio" id="delivery-good" name="delivery" value="good" required>
+                <label for="delivery-good">Good</label>
+                <input type="radio" id="delivery-bad" name="delivery" value="bad" required>
+                <label for="delivery-bad">Bad</label>
+
+            </div>
+            <br>
+            <div class=" center">
                 <br>
                 <button type="submit">
                     <text-align>submit</text-align>
