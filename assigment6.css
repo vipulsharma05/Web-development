@@ -1,0 +1,18 @@
+.cont{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;    
+}
+.btn{
+    border-radius: 9px;
+    background-color: rgb(225, 110, 10);
+    border: 2px solid black;
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
+}
+.btn:hover{
+    color: white;
+    background-color:blueviolet;
+    
+}
