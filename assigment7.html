@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation</title>
+  <style>
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    .error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="checkbox"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[type="button"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="button"]:hover {
+  background-color: #45a049;
+}
+
+
+  </style>
+</head>
+<body>
+  <form id="myForm">
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName">
+      <div id="firstNameError" class="error"></div>
+    </div>
+
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName">
+      <div id="lastNameError" class="error"></div>
+    </div>
+
+    <div>
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="text" id="phoneNumber" name="phoneNumber">
+      <div id="phoneNumberError" class="error"></div>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email">
+      <div id="emailError" class="error"></div>
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+      <div id="passwordError" class="error"></div>
+    </div>
+
+    <div>
+      <input type="checkbox" id="terms" name="terms">
+      <label for="terms">I agree to the given Terms and Conditions.</label>
+      <div id="termsError" class="error"></div>
+    </div>
+
+    <button type="button" onclick="validateForm()">Submit</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      // Clear previous error messages
+      clearErrors();
+
+      // Get form inputs
+      var firstName = document.getElementById('firstName').value;
+      var lastName = document.getElementById('lastName').value;
+      var phoneNumber = document.getElementById('phoneNumber').value;
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+      var terms = document.getElementById('terms').checked;
+
+      var isValid = true;
+
+      // Validate name fields
+      if (firstName.trim() === '') {
+        displayError('firstNameError', 'Name cannot be empty');
+        isValid = false;
+      }
+      if (lastName.trim() === '') {
+        displayError('lastNameError', 'Name cannot be empty');
+        isValid = false;
+      }
+
+      // Validate phone number
+      var phoneNumberRegex = /^\d{10}$/;
+      if (!phoneNumberRegex.test(phoneNumber)) {
+        displayError('phoneNumberError', 'Please enter a valid phone number');
+        isValid = false;
+      }
+
+      // Validate email
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        displayError('emailError', 'Please enter a valid email address');
+        isValid = false;
+      }
+
+      // Validate password
+      var passwordRegex = /^(?=.*\d)(?=.*[A-Z]).{8,}$/;
+      if (!passwordRegex.test(password)) {
+        displayError('passwordError', 'Please enter a valid password');
+        isValid = false;
+      }
+
+      // Validate terms and conditions
+      if (!terms) {
+        displayError('termsError', 'Please agree to the given Terms and Conditions');
+        isValid = false;
+      }
+
+            // If any field is invalid, stop form submission and show error messages
+            if (!isValid) {
+        return;
+      }
+
+      // If all fields are valid, proceed with form submission
+      // You can perform additional actions here, such as sending the form data to a server
+
+      // Log form values
+      console.log('First Name:', firstName);
+      console.log('Last Name:', lastName);
+      console.log('Phone Number:', phoneNumber);
+      console.log('Email:', email);
+      console.log('Password:', password);
+
+      // Show success message
+      alert('Form submitted successfully');
+    }
+
+    function displayError(elementId, errorMessage) {
+      var errorElement = document.getElementById(elementId);
+      errorElement.innerText = errorMessage;
+    }
+
+    function clearErrors() {
+      var errorElements = document.getElementsByClassName('error');
+      for (var i = 0; i < errorElements.length; i++) {
+        errorElements[i].innerText = '';
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
